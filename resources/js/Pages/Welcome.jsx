@@ -630,9 +630,10 @@ export default function Welcome({ auth }) {
               <div className="lg:col-span-6 text-center lg:text-left">
                 <Reveal>
                   <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-5xl md:text-6xl">
-                    Nilai Tugas Lebih Cepat,
+                    <MarkerText>Rubriq AI</MarkerText>
+                    
                     <br />
-                    <MarkerText>Tetap Manusiawi.</MarkerText>
+                     — Cara Baru Menilai Pembelajaran.
                   </h1>
 
                   <p className="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300">
