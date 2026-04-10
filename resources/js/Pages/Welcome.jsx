@@ -1,5 +1,33 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Head } from "@inertiajs/react";
+import { FileText, Upload, Cpu, Send } from "lucide-react";
+
+const workflows = [
+  {
+    step: "01",
+    title: "Buat Rubrik",
+    desc: "Tentukan kriteria, bobot, dan level penilaian pada tugas.",
+    icon: FileText,
+  },
+  {
+    step: "02",
+    title: "Terima Tugas",
+    desc: "Mahasiswa mengirim teks, file, atau tautan via Class Code.",
+    icon: Upload,
+  },
+  {
+    step: "03",
+    title: "Generate AI",
+    desc: "Klik satu tombol, AI membuat draft feedback terstruktur.",
+    icon: Cpu,
+  },
+  {
+    step: "04",
+    title: "Review & Publish",
+    desc: "Anda editor finalnya. Koreksi jika perlu, lalu kirim.",
+    icon: Send,
+  },
+];
 
 /* =========================
    UTIL
@@ -423,16 +451,21 @@ export default function Welcome({ auth }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   
   // State untuk mode gelap
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+  if (typeof window === "undefined") return false;
+  return localStorage.getItem("theme") === "dark";
+});
 
   // Set dark mode HTML class
   useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDark]);
+  if (isDark) {
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+    localStorage.setItem("theme", "light");
+  }
+}, [isDark]);
 
   useEffect(() => {
     const onResize = () => {
@@ -826,25 +859,39 @@ export default function Welcome({ auth }) {
             </Reveal>
 
             <div className="grid gap-12 lg:grid-cols-4">
-              {[
-                { step: "01", title: "Buat Rubrik", desc: "Tentukan kriteria, bobot, dan level penilaian pada tugas." },
-                { step: "02", title: "Terima Tugas", desc: "Mahasiswa mengirim teks, file, atau tautan via Class Code." },
-                { step: "03", title: "Generate AI", desc: "Klik satu tombol, AI membuat draft feedback terstruktur." },
-                { step: "04", title: "Review & Publish", desc: "Anda editor finalnya. Koreksi jika perlu, lalu kirim." },
-              ].map((item, idx) => (
-                <Reveal key={idx} delay={idx * 90}>
-                  <div className="relative">
-                    {idx !== 3 && (
-                      <div className="absolute top-8 left-8 hidden h-0.5 w-full bg-slate-200 dark:bg-slate-700 lg:block" />
-                    )}
-                    <div className="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl bg-white dark:bg-slate-800 text-xl font-black text-blue-600 dark:text-blue-400 shadow-md ring-1 ring-slate-900/5 dark:ring-white/10">
-                      {item.step}
-                    </div>
-                    <h3 className="mt-6 text-xl font-bold text-slate-900 dark:text-white">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">{item.desc}</p>
-                  </div>
-                </Reveal>
-              ))}
+               {workflows.map((item, idx) => {
+                  const Icon = item.icon;
+
+                  return (
+                    <Reveal key={idx} delay={idx * 90}>
+                      <div className="relative text-center group">
+
+                        {idx !== workflows.length - 1 && (
+                          <div className="absolute top-10 left-1/2 hidden h-0.5 w-full -translate-x-1/2 bg-slate-200 dark:bg-slate-700 lg:block" />
+                        )}
+
+                        <div className="relative z-10 mx-auto flex h-20 w-20 flex-col items-center justify-center rounded-2xl 
+                          bg-white dark:bg-slate-800 shadow-md ring-1 ring-slate-900/5 dark:ring-white/10
+                          transition group-hover:scale-105">
+
+                          <Icon className="w-6 h-6 text-blue-600 dark:text-blue-400 mb-1" />
+                          <span className="text-xs font-bold text-slate-400">
+                            {item.step}
+                          </span>
+                        </div>
+
+                        <h3 className="mt-6 text-lg font-bold text-slate-900 dark:text-white">
+                          {item.title}
+                        </h3>
+
+                        <p className="mt-2 text-sm leading-6 text-slate-600 dark:text-slate-400">
+                          {item.desc}
+                        </p>
+
+                      </div>
+                    </Reveal>
+                  );
+                })}
             </div>
           </div>
         </section>

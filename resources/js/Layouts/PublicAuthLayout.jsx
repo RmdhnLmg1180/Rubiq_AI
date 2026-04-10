@@ -92,69 +92,41 @@ function Illustration() {
 
 export default function PublicAuthLayout({ title, subtitle, children }) {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 via-white to-emerald-50">
-      <div className="mx-auto grid min-h-screen max-w-6xl grid-cols-1 md:grid-cols-2">
-        {/* Left */}
-        <div className="relative overflow-hidden px-6 py-10 md:px-10">
-          <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-pink-200/70 blur-3xl" />
-          <div className="absolute top-10 -right-24 h-72 w-72 rounded-full bg-orange-200/60 blur-3xl" />
-          <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-emerald-200/60 blur-3xl" />
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-blue-50 to-blue-100 px-6">
 
-          <div className="relative">
-            <Link href="/" className="inline-flex items-center gap-3">
-              <LogoMark />
-              <div className="leading-tight">
-                <div className="text-sm font-extrabold tracking-tight text-slate-900">
-                  RubriQ AI
-                </div>
-                <div className="text-xs font-semibold text-slate-500">
-                  Feedback yang rapi & menyenangkan
-                </div>
-              </div>
-            </Link>
+      {/* BOX / CARD */}
+      <div className="w-full max-w-md">
 
-            <div className="mt-10">
-              <h1 className="text-3xl font-extrabold tracking-tight text-slate-900">
-                {title}
-              </h1>
-              <p className="mt-3 max-w-md text-sm leading-6 text-slate-600">
-                {subtitle}
-              </p>
-            </div>
+        <div className="bg-white/80 backdrop-blur-xl border border-blue-100 shadow-xl rounded-3xl p-8">
 
-            <div className="mt-8 grid gap-3">
-              <Sticker
-                color="bg-orange-100"
-                title="Lebih cepat"
-                desc="Draft feedback otomatis—Anda tinggal review & edit."
-              />
-              <Sticker
-                color="bg-pink-100"
-                title="Lebih konsisten"
-                desc="Feedback mengikuti rubrik (lebih adil dan jelas)."
-              />
-              <Sticker
-                color="bg-emerald-100"
-                title="Lebih terukur"
-                desc="Dashboard merangkum progres & keterlambatan."
-              />
-            </div>
-
-            <Illustration />
+          {/* LOGO */}
+          <div className="flex flex-col items-center text-center mb-6">
+            <LogoMark className="h-12 w-12 mb-3" />
+            <h1 className="text-xl font-bold text-slate-900">
+              RubriQ AI
+            </h1>
           </div>
+
+          {/* TITLE */}
+          <div className="mb-6 text-center">
+            <h2 className="text-2xl font-bold text-slate-900">
+              {title}
+            </h2>
+            <p className="text-sm text-slate-600 mt-2">
+              {subtitle}
+            </p>
+          </div>
+
+          {/* FORM */}
+          {children}
+
         </div>
 
-        {/* Right */}
-        <div className="flex items-center px-6 py-10 md:px-10">
-          <div className="w-full">
-            <div className="rounded-[36px] border border-black/10 bg-white/80 p-6 shadow-sm backdrop-blur md:p-8">
-              {children}
-            </div>
-            <div className="mt-6 text-center text-xs font-semibold text-slate-500">
-              Dengan melanjutkan, Anda menyetujui kebijakan penggunaan dan privasi.
-            </div>
-          </div>
-        </div>
+        {/* FOOTER */}
+        <p className="mt-6 text-xs text-center text-slate-500">
+          Dengan melanjutkan, Anda menyetujui kebijakan penggunaan dan privasi.
+        </p>
+
       </div>
     </div>
   );
