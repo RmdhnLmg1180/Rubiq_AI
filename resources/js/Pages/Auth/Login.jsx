@@ -26,7 +26,7 @@ export default function Login({ status, canResetPassword }) {
       <Head title="Masuk" />
 
       <PublicAuthLayout
-        title="Masuk ke LMS"
+        title="Masuk ke akun Anda"
         subtitle="Kelola pembelajaran, tugas, dan penilaian dengan lebih mudah dan terstruktur."
       >
         {/* STATUS */}
@@ -46,7 +46,11 @@ export default function Login({ status, canResetPassword }) {
               type="email"
               name="email"
               value={data.email}
-              className="mt-1 block w-full rounded-xl border border-blue-100 focus:border-blue-400 focus:ring-blue-400"
+              className="mt-1 block w-full rounded-xl 
+              border border-blue-100 dark:border-slate-700 
+              bg-white dark:bg-slate-800 
+              text-slate-900 dark:text-white
+              focus:border-blue-400 focus:ring-blue-400"
               autoComplete="username"
               isFocused={true}
               onChange={(e) => setData("email", e.target.value)}
@@ -74,7 +78,11 @@ export default function Login({ status, canResetPassword }) {
               type="password"
               name="password"
               value={data.password}
-              className="mt-1 block w-full rounded-xl border border-blue-100 focus:border-blue-400 focus:ring-blue-400"
+              className="mt-1 block w-full rounded-xl 
+              border border-blue-100 dark:border-slate-700 
+              bg-white dark:bg-slate-800 
+              text-slate-900 dark:text-white
+              focus:border-blue-400 focus:ring-blue-400"
               autoComplete="current-password"
               onChange={(e) => setData("password", e.target.value)}
               placeholder="Masukkan password"
@@ -96,7 +104,7 @@ export default function Login({ status, canResetPassword }) {
           {/* ACTION */}
           <div className="space-y-3">
             <PrimaryButton
-              className="w-full justify-center rounded-xl bg-blue-600 px-8 py-3.5 text-sm font-bold text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-blue-700"
+              className="w-full justify-center rounded-xl bg-blue hover:bg-white-800 dark:bg-Blue dark:text-blue dark:hover:bg-white-200"
               disabled={processing}
             >
               {processing ? "Memproses..." : "Masuk"}
@@ -104,7 +112,8 @@ export default function Login({ status, canResetPassword }) {
 
             <Link
               href="/"
-              className="block text-center text-sm text-blue-600 hover:text-blue-800"
+              className="block text-center text-blue-600 hover:text-blue-800 
+              dark:text-blue-400 dark:hover:text-blue-300"
             >
               ← Kembali ke beranda
             </Link>

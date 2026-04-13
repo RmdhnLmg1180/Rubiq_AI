@@ -1,31 +1,13 @@
 import React from "react";
 import { Link } from "@inertiajs/react";
 
-function LogoMark({ className = "h-10 w-10" }) {
+function LogoMark({ className = "h-12 w-auto object-contain" }) {
   return (
-    <svg viewBox="0 0 64 64" className={className} aria-hidden="true">
-      <defs>
-        <linearGradient id="rqPlay2" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#F97316" />
-          <stop offset="45%" stopColor="#EC4899" />
-          <stop offset="100%" stopColor="#22C55E" />
-        </linearGradient>
-      </defs>
-      <path
-        d="M12 16c0-5 4-9 9-9h20c11 0 20 9 20 20v12c0 11-9 20-20 20H24c-11 0-20-9-20-20V16Z"
-        fill="url(#rqPlay2)"
-      />
-      <path
-        d="M22 24h18c4.4 0 8 3.6 8 8s-3.6 8-8 8H31l-6 7h-3v-7h0V24Z"
-        fill="white"
-        fillOpacity="0.92"
-      />
-      <path
-        d="M28 29h9.5c2.5 0 4.5 2 4.5 4.5S40 38 37.5 38H28v-9Z"
-        fill="#0b1020"
-        fillOpacity="0.85"
-      />
-    </svg>
+    <img
+      src="/images/Logo_Rubriq.png"
+      alt="RubriQ AI"
+      className={className}
+    />
   );
 }
 
@@ -92,27 +74,30 @@ function Illustration() {
 
 export default function PublicAuthLayout({ title, subtitle, children }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-white via-blue-50 to-blue-100 px-6">
+    <div className="min-h-screen flex items-center justify-center 
+      bg-gradient-to-br from-white via-blue-50 to-blue-100 
+      dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 
+      px-6">
 
       {/* BOX / CARD */}
       <div className="w-full max-w-md">
 
-        <div className="bg-white/80 backdrop-blur-xl border border-blue-100 shadow-xl rounded-3xl p-8">
+        <div className="bg-white/80 dark:bg-slate-900/80 border border-blue-100 dark:border-slate-700 rounded-3xl p-8 shadow-lg backdrop-blur">
 
           {/* LOGO */}
           <div className="flex flex-col items-center text-center mb-6">
             <LogoMark className="h-12 w-12 mb-3" />
-            <h1 className="text-xl font-bold text-slate-900">
+            <h1 className="text-xl font-bold text-slate-900 dark:text-white">
               RubriQ AI
             </h1>
           </div>
 
           {/* TITLE */}
           <div className="mb-6 text-center">
-            <h2 className="text-2xl font-bold text-slate-900">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
               {title}
             </h2>
-            <p className="text-sm text-slate-600 mt-2">
+            <p className="text-sm text-slate-600 dark:text-slate-300 mt-2">
               {subtitle}
             </p>
           </div>
@@ -123,7 +108,7 @@ export default function PublicAuthLayout({ title, subtitle, children }) {
         </div>
 
         {/* FOOTER */}
-        <p className="mt-6 text-xs text-center text-slate-500">
+        <p className="mt-6 text-xs text-center text-slate-500 dark:text-slate-400">
           Dengan melanjutkan, Anda menyetujui kebijakan penggunaan dan privasi.
         </p>
 

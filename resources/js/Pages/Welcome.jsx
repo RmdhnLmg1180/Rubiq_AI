@@ -519,12 +519,14 @@ export default function Welcome({ auth }) {
                 className="flex items-center gap-2 focus:outline-none"
                 aria-label="Ke Beranda"
               >
-                <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 via-indigo-500 to-cyan-500 text-white">
-                  <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zm0 9l2.5-1.25L12 8.5l-2.5 1.25L12 11zm0 2.5l-5-2.5-5 2.5L12 22l10-8.5-5-2.5-5 2.5z" />
-                  </svg>
+                <div className="flex h-12 w-auto items-center justify-center">
+                <img
+                  src="/images/Logo_Rubriq.png"
+                  alt="RubriQ AI"
+                  className="h-10 w-auto object-contain"
+                />
                 </div>
-                <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">RubriQ AI</span>
+                <span className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">RubriQ AI</span>
               </button>
 
               {/* Desktop nav */}

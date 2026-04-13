@@ -55,3 +55,4 @@ class InstructorApplicationController extends Controller
         return back()->with('success', 'Pengajuan berhasil dikirim. Tunggu persetujuan Admin.');
     }
 }
+

@@ -26,7 +26,7 @@ export default function Register() {
       <Head title="Daftar" />
 
       <PublicAuthLayout
-        title="Buat akun RubriQ AI"
+        title="Buat akun anda sekarang juga"
         subtitle="Mulai dari yang sederhana: join kelas, lihat rubrik, submit tugas, dan terima feedback yang jelas serta actionable."
       >
         <form onSubmit={submit} className="space-y-5">
@@ -90,19 +90,30 @@ export default function Register() {
             <InputError message={errors.password_confirmation} className="mt-2" />
           </div>
 
-          <div className="flex items-center justify-between gap-4">
+          <div className="space-y-3">
+            <PrimaryButton
+                          className="w-full justify-center rounded-xl bg-blue hover:bg-white-800 dark:bg-Blue dark:text-blue dark:hover:bg-white-200"
+                          disabled={processing}
+                        >
+                          {processing ? "Memproses..." : "Masuk"}
+            </PrimaryButton>
+            <Link
+                          href="/"
+                          className="block text-center text-blue-600 hover:text-blue-800 
+                          dark:text-blue-400 dark:hover:text-blue-300"
+                        >
+                          ← Kembali ke beranda
+                        </Link>
+          </div>
+          <div className="pt-2 text-center text-sm text-slate-600">
+            Saya sudah punya akun{" "}
             <Link
               href={route("login")}
-              className="text-sm font-extrabold text-slate-600 hover:text-slate-900"
+              className="font-semibold text-blue-600 hover:text-blue-800"
             >
-              Saya sudah punya akun
+              Login
             </Link>
-
-            <PrimaryButton className="rounded-2xl" disabled={processing}>
-              {processing ? "Membuat akun..." : "Daftar"}
-            </PrimaryButton>
           </div>
-
           <div className="pt-2 text-center text-xs font-semibold text-slate-500">
             Setelah daftar, Anda bisa join kelas menggunakan <b>class code</b>.
           </div>
